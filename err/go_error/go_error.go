@@ -1,26 +1,26 @@
 package go_error
 
 import (
-  "strconv"
+	"strconv"
 )
 
 func returnNilError() error {
-  return nil
+	return nil
 }
 
 type EmptyError struct {
 }
 
 func (e EmptyError) Error() string {
-  return "EmptyError"
+	return "EmptyError"
 }
 
 type OneFieldError struct {
-  FieldA string
+	FieldA string
 }
 
 func (e OneFieldError) Error() string {
-  return "OneFieldError{FieldA:" + e.FieldA + "}"
+	return "OneFieldError{FieldA:" + e.FieldA + "}"
 }
 
 type FiveFieldError struct {

@@ -1,69 +1,69 @@
 package go_error_test
 
 import (
-  "testing"
-  "github.com/sttk-go/benchmarks_sabi/err/go_error"
+	"github.com/sttk-go/benchmarks_sabi/err/go_error"
+	"testing"
 )
 
 func unused(v any) {}
 
 func returnNilError() error {
-  return nil
+	return nil
 }
 
 func Benchmark_ok(b *testing.B) {
-  var err error
-  b.StartTimer()
-  for i := 0; i < b.N; i++ {
-    e := returnNilError()
-    err = e
-  }
-  b.StopTimer()
-  unused(err)
+	var err error
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		e := returnNilError()
+		err = e
+	}
+	b.StopTimer()
+	unused(err)
 }
 
 func Benchmark_ok_isOk(b *testing.B) {
-  var err error
-  e := returnNilError()
-  b.StartTimer()
-  for i := 0; i < b.N; i++ {
-    if e == nil {
-      err = e
-    }
-  }
-  b.StopTimer()
-  unused(err)
+	var err error
+	e := returnNilError()
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		if e == nil {
+			err = e
+		}
+	}
+	b.StopTimer()
+	unused(err)
 }
 
 func Benchmark_ok_typeSwitch(b *testing.B) {
-  var err error
-  e := returnNilError()
-  b.StartTimer()
-  for i := 0; i < b.N; i++ {
-    switch e.(type) {
-    case nil:
-      err = e
-    default:
-      b.Fail()
-    }
-  }
-  b.StopTimer()
-  unused(err)
+	var err error
+	e := returnNilError()
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		switch e.(type) {
+		case nil:
+			err = e
+		default:
+			b.Fail()
+		}
+	}
+	b.StopTimer()
+	unused(err)
 }
 
 func Benchmark_ok_ErrorString(b *testing.B) {
-  var str string
-  b.StartTimer()
-  for i := 0; i < b.N; i++ {
-    s := "nil"
-    str = s
-  }
-  b.StopTimer()
-  unused(str)
+	var str string
+	b.StartTimer()
+	for i := 0; i < b.N; i++ {
+		s := "nil"
+		str = s
+	}
+	b.StopTimer()
+	unused(str)
 }
 
 func returnEmptyError() error {
-  return go_error.EmptyError{}
+	return go_error.EmptyError{}
 }
 
 func Benchmark_empty(b *testing.B) {
@@ -273,4 +273,3 @@ func Benchmark_havingCause_ErrorString(b *testing.B) {
 	b.StopTimer()
 	unused(str)
 }
-

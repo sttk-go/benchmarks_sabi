@@ -4,3 +4,4 @@ Benchmarks of Sabi modules
 
 - [`error` and `sabi.Err`](./err/benchmark.md)
 - [`sabi.Err`'s notification](./notify/benchmark.md)
+- [`sabi.DaxBase`](./dax/benchmark.md)

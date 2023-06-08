@@ -13,10 +13,10 @@ func returnOkErr() sabi.Err {
 
 func Benchmark_AddSyncErrHandler(b *testing.B) {
 	b.StartTimer()
-  for i := 0; i < b.N; i++ {
-	  sabi.AddSyncErrHandler(func(err sabi.Err, occ sabi.ErrOccasion) {})
-  	sabi.FixErrCfgs()
-  }
+	for i := 0; i < b.N; i++ {
+		sabi.AddSyncErrHandler(func(err sabi.Err, occ sabi.ErrOccasion) {})
+		sabi.FixErrCfgs()
+	}
 	b.StopTimer()
 }
 

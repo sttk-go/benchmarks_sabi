@@ -1,9 +1,9 @@
 package sabi_err_test
 
 import (
-  "testing"
+	"testing"
 
-  sabi "github.com/sttk-go/benchmarks_sabi/err/sabi_err"
+	sabi "github.com/sttk-go/benchmarks_sabi/err/sabi_err"
 )
 
 func unused(v any) {}
