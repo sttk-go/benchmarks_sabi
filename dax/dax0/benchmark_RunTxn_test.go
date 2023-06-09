@@ -6,6 +6,9 @@ import (
 )
 
 func Benchmark_RunTxn_commit_oneDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 
@@ -19,6 +22,9 @@ func Benchmark_RunTxn_commit_oneDs(b *testing.B) {
 }
 
 func Benchmark_RunTxn_commit_fiveDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 	base.SetUpLocalDaxSrc("bar", BarDaxSrc{})
@@ -36,6 +42,9 @@ func Benchmark_RunTxn_commit_fiveDs(b *testing.B) {
 }
 
 func Benchmark_RunTxn_rollback_oneDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 
@@ -50,6 +59,9 @@ func Benchmark_RunTxn_rollback_oneDs(b *testing.B) {
 }
 
 func Benchmark_RunTxn_rollback_fiveDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 	base.SetUpLocalDaxSrc("bar", BarDaxSrc{})

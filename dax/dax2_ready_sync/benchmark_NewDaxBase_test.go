@@ -6,6 +6,9 @@ import (
 )
 
 func Benchmark_NewDaxBase(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		base := sabi.NewDaxBase()

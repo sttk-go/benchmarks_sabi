@@ -6,6 +6,9 @@ import (
 )
 
 func Benchmark_GetDaxConn_global_oneDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	sabi.AddGlobalDaxSrc("foo", FooDaxSrc{})
 	base := sabi.NewDaxBase()
 
@@ -19,6 +22,9 @@ func Benchmark_GetDaxConn_global_oneDs(b *testing.B) {
 }
 
 func Benchmark_GetDaxConn_global_fiveDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	sabi.AddGlobalDaxSrc("foo", FooDaxSrc{})
 	sabi.AddGlobalDaxSrc("bar", BarDaxSrc{})
 	sabi.AddGlobalDaxSrc("baz", BazDaxSrc{})
@@ -45,6 +51,9 @@ func Benchmark_GetDaxConn_global_fiveDs(b *testing.B) {
 }
 
 func Benchmark_GetDaxConn_local_oneDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 
@@ -58,8 +67,10 @@ func Benchmark_GetDaxConn_local_oneDs(b *testing.B) {
 }
 
 func Benchmark_GetDaxConn_local_fiveDs(b *testing.B) {
-	base := sabi.NewDaxBase()
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
 
+	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 	base.SetUpLocalDaxSrc("bar", BarDaxSrc{})
 	base.SetUpLocalDaxSrc("baz", BazDaxSrc{})

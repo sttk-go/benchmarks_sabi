@@ -1,4 +1,4 @@
-package dax2_ready_sync
+package dax0
 
 func ResetGlobals() {
 	isGlobalDaxSrcsFixed = false

@@ -6,6 +6,9 @@ import (
 )
 
 func Benchmark_SetUpLocalDaxSrc_oneDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 
 	b.StartTimer()
@@ -16,6 +19,9 @@ func Benchmark_SetUpLocalDaxSrc_oneDs(b *testing.B) {
 }
 
 func Benchmark_SetUpLocalDaxSrc_fiveDs(b *testing.B) {
+	sabi.ResetGlobals()
+	defer sabi.ResetGlobals()
+
 	base := sabi.NewDaxBase()
 
 	b.StartTimer()

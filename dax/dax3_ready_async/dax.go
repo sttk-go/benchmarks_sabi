@@ -69,7 +69,7 @@ type DaxSrc interface {
 	CreateDaxConn() (DaxConn, Err)
 	SetUp(wg sync.WaitGroup) Err
 	Ready() Err
-	End(wg sync.WaitGroup)
+	End()
 }
 
 var (
@@ -131,13 +131,9 @@ func StartUpGlobalDaxSrcs() Err {
 
 // ShutdownGlobalDaxSrcs is a function to terminate all global dax sources.
 func ShutdownGlobalDaxSrcs() {
-	var wg sync.WaitGroup
-
 	for _, ds := range globalDaxSrcMap {
-		ds.End(wg)
+		ds.End()
 	}
-
-	wg.Wait()
 }
 
 // Dax is an interface for a set of data access methods.
@@ -211,23 +207,17 @@ func (base *daxBaseImpl) FreeLocalDaxSrc(name string) {
 	if !base.isLocalDaxSrcsFixed {
 		ds, exists := base.localDaxSrcMap[name]
 		if exists {
-			var wg sync.WaitGroup
-			defer wg.Wait()
 			delete(base.localDaxSrcMap, name)
-			ds.End(wg)
+			ds.End()
 		}
 	}
 }
 
 func (base *daxBaseImpl) FreeAllLocalDaxSrcs() {
 	if !base.isLocalDaxSrcsFixed {
-		var wg sync.WaitGroup
-		defer wg.Wait()
-
 		for _, ds := range base.localDaxSrcMap {
-			ds.End(wg)
+			ds.End()
 		}
-
 		base.localDaxSrcMap = make(map[string]DaxSrc)
 	}
 }
