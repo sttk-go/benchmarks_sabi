@@ -9,14 +9,11 @@ func Benchmark_GetDaxConn_global_oneDs(b *testing.B) {
   sabi.AddGlobalDaxSrc("foo", FooDaxSrc{})
   base := sabi.NewDaxBase()
 
-  unusedFooDaxConn := func(conn FooDaxConn) {}
-  unusedErr := func(err sabi.Err) {}
-
   b.StartTimer()
   for i := 0; i < b.N; i++ {
     conn, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
-    unusedFooDaxConn(conn)
-    unusedErr(err)
+    _ = conn
+    _ = err
   }
   b.StopTimer()
 }
@@ -30,8 +27,6 @@ func Benchmark_GetDaxConn_global_fiveDs(b *testing.B) {
 
   base := sabi.NewDaxBase()
 
-  unused := func(a any) {}
-
   b.StartTimer()
   for i := 0; i < b.N; i++ {
     conn, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
@@ -39,8 +34,8 @@ func Benchmark_GetDaxConn_global_fiveDs(b *testing.B) {
     conn, err = sabi.GetDaxConn[FooDaxConn](base, "baz")
     conn, err = sabi.GetDaxConn[FooDaxConn](base, "qux")
     conn, err = sabi.GetDaxConn[FooDaxConn](base, "corge")
-    unused(conn)
-    unused(err)
+    _ = conn
+    _ = err
   }
   b.StopTimer()
 }
@@ -49,14 +44,11 @@ func Benchmark_GetDaxConn_local_oneDs(b *testing.B) {
   base := sabi.NewDaxBase()
   base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 
-  unusedFooDaxConn := func(conn FooDaxConn) {}
-  unusedErr := func(err sabi.Err) {}
-
   b.StartTimer()
   for i := 0; i < b.N; i++ {
     conn, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
-    unusedFooDaxConn(conn)
-    unusedErr(err)
+    _ = conn
+    _ = err
   }
   b.StopTimer()
 }
@@ -70,8 +62,6 @@ func Benchmark_GetDaxConn_local_fiveDs(b *testing.B) {
   base.SetUpLocalDaxSrc("qux", QuxDaxSrc{})
   base.SetUpLocalDaxSrc("corge", CorgeDaxSrc{})
 
-  unused := func(a any) {}
-
   b.StartTimer()
   for i := 0; i < b.N; i++ {
     conn, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
@@ -79,8 +69,8 @@ func Benchmark_GetDaxConn_local_fiveDs(b *testing.B) {
     conn, err = sabi.GetDaxConn[FooDaxConn](base, "baz")
     conn, err = sabi.GetDaxConn[FooDaxConn](base, "qux")
     conn, err = sabi.GetDaxConn[FooDaxConn](base, "corge")
-    unused(conn)
-    unused(err)
+    _ = conn
+    _ = err
   }
   b.StopTimer()
 }

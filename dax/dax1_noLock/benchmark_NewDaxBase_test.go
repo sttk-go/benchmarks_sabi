@@ -6,12 +6,10 @@ import (
 )
 
 func Benchmark_NewDaxBase(b *testing.B) {
-  unused := func(a any) {}
-
   b.StartTimer()
   for i := 0; i < b.N; i++ {
     base := sabi.NewDaxBase()
-    unused(base)
+    _ = base
   }
   b.StopTimer()
 }
