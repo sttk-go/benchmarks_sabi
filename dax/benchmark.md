@@ -7,29 +7,29 @@ goos: darwin
 goarch: amd64
 pkg: github.com/sttk-go/benchmarks_sabi/dax/dax0
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
-Benchmark_AddGlobalDaxSrc_oneDs-12           	64613872	        18.66 ns/op	       0 B/op	       0 allocs/op
-Benchmark_AddGlobalDaxSrc_fiveDs-12          	10845070	       107.8 ns/op	       0 B/op	       0 allocs/op
-Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 6524212	       184.1 ns/op	     336 B/op	       2 allocs/op
-Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 3179898	       372.3 ns/op	     336 B/op	       2 allocs/op
-Benchmark_FreeLocalDaxSrc_oneDs-12           	19838622	        61.34 ns/op	       0 B/op	       0 allocs/op
-Benchmark_FreeLocalDaxSrc_fiveDs-12          	 3436761	       354.7 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_global_oneDs-12         	82861723	        14.03 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_global_fiveDs-12        	 1000000	      1009 ns/op	     704 B/op	      12 allocs/op
-Benchmark_GetDaxConn_local_oneDs-12          	83642322	        14.26 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_local_fiveDs-12         	 1000000	      1003 ns/op	     704 B/op	      12 allocs/op
-Benchmark_NewDaxBase-12                      	95604007	        12.19 ns/op	       0 B/op	       0 allocs/op
-Benchmark_RunTxn_commit_oneDs-12             	 7617122	       160.5 ns/op	     208 B/op	       4 allocs/op
-Benchmark_RunTxn_commit_fiveDs-12            	 7590507	       158.7 ns/op	     208 B/op	       4 allocs/op
-Benchmark_RunTxn_rollback_oneDs-12           	10296888	       116.8 ns/op	      80 B/op	       3 allocs/op
-Benchmark_RunTxn_rollback_fiveDs-12          	10205098	       117.8 ns/op	      80 B/op	       3 allocs/op
-Benchmark_SetUpLocalDaxSrc_oneDs-12          	58125292	        20.11 ns/op	       0 B/op	       0 allocs/op
-Benchmark_SetUpLocalDaxSrc_fiveDs-12         	 9841222	       121.6 ns/op	       0 B/op	       0 allocs/op
-Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	 1786282	       663.5 ns/op	      64 B/op	       3 allocs/op
-Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	  537992	      2287 ns/op	     256 B/op	      11 allocs/op
-Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 1789880	       660.3 ns/op	     208 B/op	       3 allocs/op
-Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	  376281	      3144 ns/op	     464 B/op	       7 allocs/op
+Benchmark_AddGlobalDaxSrc_oneDs-12           	68839777	        18.20 ns/op	       0 B/op	       0 allocs/op
+Benchmark_AddGlobalDaxSrc_fiveDs-12          	10994059	       109.2 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 6413575	       183.6 ns/op	     336 B/op	       2 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 3221197	       383.2 ns/op	     336 B/op	       2 allocs/op
+Benchmark_FreeLocalDaxSrc_oneDs-12           	19191723	        61.56 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeLocalDaxSrc_fiveDs-12          	 3348549	       349.3 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_oneDs-12         	84325184	        13.94 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_fiveDs-12        	12988977	        94.18 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_oneDs-12          	88968690	        14.02 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_fiveDs-12         	11985762	        97.24 ns/op	       0 B/op	       0 allocs/op
+Benchmark_NewDaxBase-12                      	83735706	        12.50 ns/op	       0 B/op	       0 allocs/op
+Benchmark_RunTxn_commit_oneDs-12             	 7670098	       158.4 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_commit_fiveDs-12            	 7374903	       157.9 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_rollback_oneDs-12           	10028804	       116.4 ns/op	      80 B/op	       3 allocs/op
+Benchmark_RunTxn_rollback_fiveDs-12          	10217492	       116.3 ns/op	      80 B/op	       3 allocs/op
+Benchmark_SetUpLocalDaxSrc_oneDs-12          	61125988	        20.05 ns/op	       0 B/op	       0 allocs/op
+Benchmark_SetUpLocalDaxSrc_fiveDs-12         	 9814810	       120.1 ns/op	       0 B/op	       0 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	 1801696	       663.2 ns/op	      64 B/op	       3 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	  509618	      2272 ns/op	     256 B/op	      11 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 1815336	       656.9 ns/op	     208 B/op	       3 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	  386509	      3106 ns/op	     464 B/op	       7 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/dax/dax0	29.171s
+ok  	github.com/sttk-go/benchmarks_sabi/dax/dax0	30.170s
 ```
 
 ## dax1_noLock
@@ -39,29 +39,29 @@ goos: darwin
 goarch: amd64
 pkg: github.com/sttk-go/benchmarks_sabi/dax/dax1_noLock
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
-Benchmark_AddGlobalDaxSrc_oneDs-12           	289389169	         4.075 ns/op	       0 B/op	       0 allocs/op
-Benchmark_AddGlobalDaxSrc_fiveDs-12          	24760960	        48.04 ns/op	       0 B/op	       0 allocs/op
-Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 7012440	       168.5 ns/op	     336 B/op	       2 allocs/op
-Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 3564448	       334.8 ns/op	     336 B/op	       2 allocs/op
-Benchmark_FreeLocalDaxSrc_oneDs-12           	29733372	        39.65 ns/op	       0 B/op	       0 allocs/op
-Benchmark_FreeLocalDaxSrc_fiveDs-12          	 4580565	       260.1 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_global_oneDs-12         	100000000	        11.93 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_global_fiveDs-12        	 1000000	      1032 ns/op	     832 B/op	      12 allocs/op
-Benchmark_GetDaxConn_local_oneDs-12          	100000000	        11.83 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_local_fiveDs-12         	 1174717	      1000 ns/op	     832 B/op	      12 allocs/op
-Benchmark_NewDaxBase-12                      	93036042	        12.56 ns/op	       0 B/op	       0 allocs/op
-Benchmark_RunTxn_commit_oneDs-12             	 7329841	       161.1 ns/op	     208 B/op	       4 allocs/op
-Benchmark_RunTxn_commit_fiveDs-12            	 7588900	       168.6 ns/op	     208 B/op	       4 allocs/op
-Benchmark_RunTxn_rollback_oneDs-12           	 9881638	       113.4 ns/op	      80 B/op	       3 allocs/op
-Benchmark_RunTxn_rollback_fiveDs-12          	10479270	       115.1 ns/op	      80 B/op	       3 allocs/op
-Benchmark_SetUpLocalDaxSrc_oneDs-12          	216420318	         5.513 ns/op	       0 B/op	       0 allocs/op
-Benchmark_SetUpLocalDaxSrc_fiveDs-12         	21408070	        57.50 ns/op	       0 B/op	       0 allocs/op
-Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	 1745301	       680.4 ns/op	      64 B/op	       3 allocs/op
-Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	  517816	      2348 ns/op	     256 B/op	      11 allocs/op
-Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 1769203	       675.4 ns/op	     208 B/op	       3 allocs/op
-Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	  377104	      3135 ns/op	     464 B/op	       7 allocs/op
+Benchmark_AddGlobalDaxSrc_oneDs-12           	270324130	         4.040 ns/op	       0 B/op	       0 allocs/op
+Benchmark_AddGlobalDaxSrc_fiveDs-12          	24704067	        47.77 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 6940434	       167.1 ns/op	     336 B/op	       2 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 3511857	       337.4 ns/op	     336 B/op	       2 allocs/op
+Benchmark_FreeLocalDaxSrc_oneDs-12           	29876404	        39.61 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeLocalDaxSrc_fiveDs-12          	 4578314	       259.3 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_oneDs-12         	100000000	        11.12 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_fiveDs-12        	13947904	        84.07 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_oneDs-12          	100000000	        11.30 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_fiveDs-12         	14033695	        83.87 ns/op	       0 B/op	       0 allocs/op
+Benchmark_NewDaxBase-12                      	97259928	        12.23 ns/op	       0 B/op	       0 allocs/op
+Benchmark_RunTxn_commit_oneDs-12             	 7435768	       159.5 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_commit_fiveDs-12            	 7276369	       158.2 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_rollback_oneDs-12           	10149468	       112.9 ns/op	      80 B/op	       3 allocs/op
+Benchmark_RunTxn_rollback_fiveDs-12          	10070470	       111.9 ns/op	      80 B/op	       3 allocs/op
+Benchmark_SetUpLocalDaxSrc_oneDs-12          	216730340	         5.490 ns/op	       0 B/op	       0 allocs/op
+Benchmark_SetUpLocalDaxSrc_fiveDs-12         	21043538	        56.83 ns/op	       0 B/op	       0 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	 1806780	       657.6 ns/op	      64 B/op	       3 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	  544866	      2247 ns/op	     256 B/op	      11 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 1798779	       659.9 ns/op	     208 B/op	       3 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	  380410	      3105 ns/op	     464 B/op	       7 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/dax/dax1_noLock	29.992s
+ok  	github.com/sttk-go/benchmarks_sabi/dax/dax1_noLock	28.963s
 ```
 
 ## dax2_ready_sync
@@ -71,27 +71,27 @@ goos: darwin
 goarch: amd64
 pkg: github.com/sttk-go/benchmarks_sabi/dax/dax2_ready_sync
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
-Benchmark_AddGlobalDaxSrc_oneDs-12           	301040008	         3.888 ns/op	       0 B/op	       0 allocs/op
-Benchmark_AddGlobalDaxSrc_fiveDs-12          	24396178	        48.83 ns/op	       0 B/op	       0 allocs/op
-Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 5306179	       220.6 ns/op	     368 B/op	       4 allocs/op
-Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 2311744	       518.4 ns/op	     432 B/op	       8 allocs/op
-Benchmark_FreeLocalDaxSrc_oneDs-12           	12971641	        90.61 ns/op	      32 B/op	       2 allocs/op
-Benchmark_FreeLocalDaxSrc_fiveDs-12          	 2149158	       559.1 ns/op	     160 B/op	      10 allocs/op
-Benchmark_GetDaxConn_global_oneDs-12         	100000000	        11.14 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_global_fiveDs-12        	 1242236	       971.2 ns/op	     832 B/op	      12 allocs/op
-Benchmark_GetDaxConn_local_oneDs-12          	100000000	        11.30 ns/op	       0 B/op	       0 allocs/op
-Benchmark_GetDaxConn_local_fiveDs-12         	 1241018	       961.0 ns/op	     832 B/op	      12 allocs/op
-Benchmark_NewDaxBase-12                      	97482980	        12.27 ns/op	       0 B/op	       0 allocs/op
-Benchmark_RunTxn_commit_oneDs-12             	 7301546	       159.9 ns/op	     208 B/op	       4 allocs/op
-Benchmark_RunTxn_commit_fiveDs-12            	 7644462	       154.5 ns/op	     208 B/op	       4 allocs/op
-Benchmark_RunTxn_rollback_oneDs-12           	10341522	       115.4 ns/op	      80 B/op	       3 allocs/op
-Benchmark_RunTxn_rollback_fiveDs-12          	10376695	       114.8 ns/op	      80 B/op	       3 allocs/op
-Benchmark_SetUpLocalDaxSrc_oneDs-12          	175935759	         6.763 ns/op	       0 B/op	       0 allocs/op
-Benchmark_SetUpLocalDaxSrc_fiveDs-12         	19976690	        58.45 ns/op	       0 B/op	       0 allocs/op
-Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	21529825	        55.11 ns/op	      16 B/op	       1 allocs/op
-Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	13562552	        87.71 ns/op	      16 B/op	       1 allocs/op
-Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 8737302	       134.6 ns/op	      64 B/op	       2 allocs/op
-Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	 5620357	       213.8 ns/op	      64 B/op	       2 allocs/op
+Benchmark_AddGlobalDaxSrc_oneDs-12           	301572358	         3.836 ns/op	       0 B/op	       0 allocs/op
+Benchmark_AddGlobalDaxSrc_fiveDs-12          	24525600	        48.05 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 5142834	       220.6 ns/op	     368 B/op	       4 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 2281500	       522.2 ns/op	     432 B/op	       8 allocs/op
+Benchmark_FreeLocalDaxSrc_oneDs-12           	12941109	        90.78 ns/op	      32 B/op	       2 allocs/op
+Benchmark_FreeLocalDaxSrc_fiveDs-12          	 2137970	       566.1 ns/op	     160 B/op	      10 allocs/op
+Benchmark_GetDaxConn_global_oneDs-12         	100000000	        11.48 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_fiveDs-12        	12883806	        90.20 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_oneDs-12          	100000000	        11.16 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_fiveDs-12         	13507099	        87.72 ns/op	       0 B/op	       0 allocs/op
+Benchmark_NewDaxBase-12                      	99191546	        12.16 ns/op	       0 B/op	       0 allocs/op
+Benchmark_RunTxn_commit_oneDs-12             	 7422187	       155.5 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_commit_fiveDs-12            	 7706353	       155.1 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_rollback_oneDs-12           	10367853	       112.4 ns/op	      80 B/op	       3 allocs/op
+Benchmark_RunTxn_rollback_fiveDs-12          	10409209	       113.2 ns/op	      80 B/op	       3 allocs/op
+Benchmark_SetUpLocalDaxSrc_oneDs-12          	181616311	         6.571 ns/op	       0 B/op	       0 allocs/op
+Benchmark_SetUpLocalDaxSrc_fiveDs-12         	20399294	        57.99 ns/op	       0 B/op	       0 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	20955897	        55.48 ns/op	      16 B/op	       1 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	13546245	        87.33 ns/op	      16 B/op	       1 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 8708875	       134.7 ns/op	      64 B/op	       2 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	 5494310	       214.1 ns/op	      64 B/op	       2 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/dax/dax2_ready_sync	30.800s
+ok  	github.com/sttk-go/benchmarks_sabi/dax/dax2_ready_sync	28.884s
 ```

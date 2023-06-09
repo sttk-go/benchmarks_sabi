@@ -12,6 +12,7 @@ func Benchmark_SetUpLocalDaxSrc_oneDs(b *testing.B) {
 	for i := 0; i < b.N; i++ {
 		base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 	}
+	b.StopTimer()
 }
 
 func Benchmark_SetUpLocalDaxSrc_fiveDs(b *testing.B) {
@@ -25,4 +26,5 @@ func Benchmark_SetUpLocalDaxSrc_fiveDs(b *testing.B) {
 		base.SetUpLocalDaxSrc("qux", QuxDaxSrc{})
 		base.SetUpLocalDaxSrc("corge", CorgeDaxSrc{})
 	}
+	b.StopTimer()
 }

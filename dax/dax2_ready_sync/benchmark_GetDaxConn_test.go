@@ -29,12 +29,16 @@ func Benchmark_GetDaxConn_global_fiveDs(b *testing.B) {
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		conn, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "bar")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "baz")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "qux")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "corge")
-		_ = conn
+		conn0, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
+		conn1, err := sabi.GetDaxConn[BarDaxConn](base, "bar")
+		conn2, err := sabi.GetDaxConn[BazDaxConn](base, "baz")
+		conn3, err := sabi.GetDaxConn[QuxDaxConn](base, "qux")
+		conn4, err := sabi.GetDaxConn[CorgeDaxConn](base, "corge")
+		_ = conn0
+		_ = conn1
+		_ = conn2
+		_ = conn3
+		_ = conn4
 		_ = err
 	}
 	b.StopTimer()
@@ -64,12 +68,16 @@ func Benchmark_GetDaxConn_local_fiveDs(b *testing.B) {
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		conn, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "bar")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "baz")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "qux")
-		conn, err = sabi.GetDaxConn[FooDaxConn](base, "corge")
-		_ = conn
+		conn0, err := sabi.GetDaxConn[FooDaxConn](base, "foo")
+		conn1, err := sabi.GetDaxConn[BarDaxConn](base, "bar")
+		conn2, err := sabi.GetDaxConn[BazDaxConn](base, "baz")
+		conn3, err := sabi.GetDaxConn[QuxDaxConn](base, "qux")
+		conn4, err := sabi.GetDaxConn[CorgeDaxConn](base, "corge")
+		_ = conn0
+		_ = conn1
+		_ = conn2
+		_ = conn3
+		_ = conn4
 		_ = err
 	}
 	b.StopTimer()

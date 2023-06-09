@@ -21,10 +21,10 @@ func Benchmark_RunTxn_commit_oneDs(b *testing.B) {
 func Benchmark_RunTxn_commit_fiveDs(b *testing.B) {
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
+	base.SetUpLocalDaxSrc("bar", BarDaxSrc{})
+	base.SetUpLocalDaxSrc("baz", BazDaxSrc{})
+	base.SetUpLocalDaxSrc("qux", QuxDaxSrc{})
+	base.SetUpLocalDaxSrc("corge", CorgeDaxSrc{})
 
 	logic := func(dax sabi.Dax) sabi.Err { return sabi.Ok() }
 
@@ -52,10 +52,10 @@ func Benchmark_RunTxn_rollback_oneDs(b *testing.B) {
 func Benchmark_RunTxn_rollback_fiveDs(b *testing.B) {
 	base := sabi.NewDaxBase()
 	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
-	base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
+	base.SetUpLocalDaxSrc("bar", BarDaxSrc{})
+	base.SetUpLocalDaxSrc("baz", BazDaxSrc{})
+	base.SetUpLocalDaxSrc("qux", QuxDaxSrc{})
+	base.SetUpLocalDaxSrc("corge", CorgeDaxSrc{})
 
 	type Fail struct{}
 	logic := func(dax sabi.Dax) sabi.Err { return sabi.NewErr(Fail{}) }

@@ -12,6 +12,7 @@ func Benchmark_FreeLocalDaxSrc_oneDs(b *testing.B) {
 		base.SetUpLocalDaxSrc("foo", FooDaxSrc{})
 		base.FreeLocalDaxSrc("foo")
 	}
+	b.StopTimer()
 }
 
 func Benchmark_FreeLocalDaxSrc_fiveDs(b *testing.B) {
@@ -31,4 +32,5 @@ func Benchmark_FreeLocalDaxSrc_fiveDs(b *testing.B) {
 		base.FreeLocalDaxSrc("qux")
 		base.FreeLocalDaxSrc("corge")
 	}
+	b.StopTimer()
 }
