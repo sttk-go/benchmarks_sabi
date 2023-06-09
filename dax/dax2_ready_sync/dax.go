@@ -68,7 +68,7 @@ type DaxConn interface {
 type DaxSrc interface {
 	CreateDaxConn() (DaxConn, Err)
 	SetUp(wg sync.WaitGroup) Err
-  Ready() Err
+	Ready() Err
 	End(wg sync.WaitGroup)
 }
 
@@ -103,22 +103,22 @@ func StartUpGlobalDaxSrcs() Err {
 
 	errs := make(map[string]Err)
 
-  {
-  	var wg sync.WaitGroup
-    defer wg.Wait()
-  	for name, ds := range globalDaxSrcMap {
-  		err := ds.SetUp(wg)
-      if err.IsNotOk() {
-        errs[name] = err
-      }
-  	}
-  }
+	{
+		var wg sync.WaitGroup
+		defer wg.Wait()
+		for name, ds := range globalDaxSrcMap {
+			err := ds.SetUp(wg)
+			if err.IsNotOk() {
+				errs[name] = err
+			}
+		}
+	}
 
 	for name, ds := range globalDaxSrcMap {
-    err := ds.Ready()
-    if err.IsNotOk() {
-      errs[name] = err
-    }
+		err := ds.Ready()
+		if err.IsNotOk() {
+			errs[name] = err
+		}
 	}
 
 	if len(errs) > 0 {
@@ -194,8 +194,8 @@ func (base *daxBaseImpl) SetUpLocalDaxSrc(name string, ds DaxSrc) Err {
 	if !base.isLocalDaxSrcsFixed {
 		_, exists := base.localDaxSrcMap[name]
 		if !exists {
-      var wg sync.WaitGroup
-      defer wg.Wait()
+			var wg sync.WaitGroup
+			defer wg.Wait()
 			err := ds.SetUp(wg)
 			if !err.IsOk() {
 				return err
@@ -211,8 +211,8 @@ func (base *daxBaseImpl) FreeLocalDaxSrc(name string) {
 	if !base.isLocalDaxSrcsFixed {
 		ds, exists := base.localDaxSrcMap[name]
 		if exists {
-      var wg sync.WaitGroup
-      defer wg.Wait()
+			var wg sync.WaitGroup
+			defer wg.Wait()
 			delete(base.localDaxSrcMap, name)
 			ds.End(wg)
 		}
@@ -221,8 +221,8 @@ func (base *daxBaseImpl) FreeLocalDaxSrc(name string) {
 
 func (base *daxBaseImpl) FreeAllLocalDaxSrcs() {
 	if !base.isLocalDaxSrcsFixed {
-    var wg sync.WaitGroup
-    defer wg.Wait()
+		var wg sync.WaitGroup
+		defer wg.Wait()
 
 		for _, ds := range base.localDaxSrcMap {
 			ds.End(wg)
