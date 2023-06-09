@@ -191,9 +191,6 @@ func NewDaxBase() DaxBase {
 }
 
 func (base *daxBaseImpl) SetUpLocalDaxSrc(name string, ds DaxSrc) Err {
-	base.daxConnMutex.Lock()
-	defer base.daxConnMutex.Unlock()
-
 	if !base.isLocalDaxSrcsFixed {
 		_, exists := base.localDaxSrcMap[name]
 		if !exists {
@@ -211,9 +208,6 @@ func (base *daxBaseImpl) SetUpLocalDaxSrc(name string, ds DaxSrc) Err {
 }
 
 func (base *daxBaseImpl) FreeLocalDaxSrc(name string) {
-	base.daxConnMutex.Lock()
-	defer base.daxConnMutex.Unlock()
-
 	if !base.isLocalDaxSrcsFixed {
 		ds, exists := base.localDaxSrcMap[name]
 		if exists {
