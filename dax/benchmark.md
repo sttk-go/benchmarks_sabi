@@ -95,3 +95,35 @@ Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	 5494310	       214.1 ns/op	      
 PASS
 ok  	github.com/sttk-go/benchmarks_sabi/dax/dax2_ready_sync	28.884s
 ```
+
+## dax3_ready_async
+
+```
+goos: darwin
+goarch: amd64
+pkg: github.com/sttk-go/benchmarks_sabi/dax/dax3_ready_async
+cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+Benchmark_AddGlobalDaxSrc_oneDs-12           	30597524	        37.96 ns/op	      32 B/op	       1 allocs/op
+Benchmark_AddGlobalDaxSrc_fiveDs-12          	 5561515	       218.4 ns/op	     160 B/op	       5 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 1511508	       787.6 ns/op	     464 B/op	       9 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	  350012	      3397 ns/op	     912 B/op	      33 allocs/op
+Benchmark_FreeLocalDaxSrc_oneDs-12           	 1792761	       671.8 ns/op	     128 B/op	       7 allocs/op
+Benchmark_FreeLocalDaxSrc_fiveDs-12          	  339501	      3493 ns/op	     640 B/op	      35 allocs/op
+Benchmark_GetDaxConn_global_oneDs-12         	98511644	        12.36 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_fiveDs-12        	13178863	        91.39 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_oneDs-12          	100000000	        12.14 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_fiveDs-12         	13126804	        92.70 ns/op	       0 B/op	       0 allocs/op
+Benchmark_NewDaxBase-12                      	95431472	        12.49 ns/op	       0 B/op	       0 allocs/op
+Benchmark_RunTxn_commit_oneDs-12             	 7184162	       161.2 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_commit_fiveDs-12            	 7463568	       159.7 ns/op	     208 B/op	       4 allocs/op
+Benchmark_RunTxn_rollback_oneDs-12           	10475620	       114.6 ns/op	      80 B/op	       3 allocs/op
+Benchmark_RunTxn_rollback_fiveDs-12          	10353193	       116.3 ns/op	      80 B/op	       3 allocs/op
+Benchmark_SetUpLocalDaxSrc_oneDs-12          	28401960	        42.02 ns/op	      32 B/op	       1 allocs/op
+Benchmark_SetUpLocalDaxSrc_fiveDs-12         	 4974388	       244.2 ns/op	     160 B/op	       5 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	 3641638	       329.1 ns/op	      48 B/op	       3 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_fiveDs-12    	  843876	      1429 ns/op	     176 B/op	      11 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	 2908106	       409.8 ns/op	      96 B/op	       4 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	  770124	      1581 ns/op	     224 B/op	      12 allocs/op
+PASS
+ok  	github.com/sttk-go/benchmarks_sabi/dax/dax3_ready_async	28.982s
+```
