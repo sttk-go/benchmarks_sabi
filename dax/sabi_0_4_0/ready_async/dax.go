@@ -53,9 +53,9 @@ type /* error reasons */ (
 // DaxConn is an interface which represents a connection to a data store, and
 // defines methods: Commit, Rollback and Close to work in a tranaction process.
 type DaxConn interface {
-	Commit(wg sync.WaitGroup) Err
+	Commit(wg *sync.WaitGroup) Err
 	Committed() Err
-	Rollback(wg sync.WaitGroup)
+	Rollback(wg *sync.WaitGroup)
 	Close()
 }
 
@@ -68,7 +68,7 @@ type DaxConn interface {
 // and frees this dax source.
 type DaxSrc interface {
 	CreateDaxConn() (DaxConn, Err)
-	SetUp(wg sync.WaitGroup) Err
+	SetUp(wg *sync.WaitGroup) Err
 	Ready() Err
 	End()
 }
@@ -117,7 +117,7 @@ func StartUpGlobalDaxSrcs() Err {
 	var wg sync.WaitGroup
 
 	for name, ds := range globalDaxSrcMap {
-		err := ds.SetUp(wg)
+		err := ds.SetUp(&wg)
 		if err.IsNotOk() {
 			errs[name] = err
 		}
@@ -192,7 +192,7 @@ func (base *daxBaseImpl) SetUpLocalDaxSrc(name string, ds DaxSrc) Err {
 		if !exists {
 			var wg sync.WaitGroup
 
-			err := ds.SetUp(wg)
+			err := ds.SetUp(&wg)
 			if err.IsNotOk() {
 				return err
 			}
@@ -280,7 +280,7 @@ func (base *daxBaseImpl) commit() Err {
 	var wg sync.WaitGroup
 
 	for name, conn := range base.daxConnMap {
-		err := conn.Commit(wg)
+		err := conn.Commit(&wg)
 		if err.IsNotOk() {
 			errs[name] = err
 		}
@@ -306,7 +306,7 @@ func (base *daxBaseImpl) rollback() {
 	var wg sync.WaitGroup
 
 	for _, conn := range base.daxConnMap {
-		conn.Rollback(wg)
+		conn.Rollback(&wg)
 	}
 
 	wg.Wait()

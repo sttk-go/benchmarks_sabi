@@ -5,7 +5,7 @@
 ```
 goos: darwin
 goarch: amd64
-pkg: github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/ready_sync
+pkg: github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/ready_sync
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
 Benchmark_AddGlobalDaxSrc_oneDs-12        	303900372	         3.817 ns/op	       0 B/op	       0 allocs/op
 Benchmark_AddGlobalDaxSrc_fiveDs-12       	43026807	        28.17 ns/op	       0 B/op	       0 allocs/op
@@ -27,7 +27,7 @@ Benchmark_RunTxn_commit_fiveDs-12         	 1754919	       706.0 ns/op	     400 
 Benchmark_RunTxn_rollback_oneDs-12        	 4347273	       288.4 ns/op	     352 B/op	       3 allocs/op
 Benchmark_RunTxn_rollback_fiveDs-12       	 1744645	       832.0 ns/op	     352 B/op	       3 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/ready_sync	28.260s
+ok  	github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/ready_sync	28.260s
 ```
 
 ## unlock
@@ -35,7 +35,7 @@ ok  	github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/ready_sync	28.260s
 ```
 goos: darwin
 goarch: amd64
-pkg: github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/unlock
+pkg: github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/unlock
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
 Benchmark_AddGlobalDaxSrc_oneDs-12        	284710560	         3.892 ns/op	       0 B/op	       0 allocs/op
 Benchmark_AddGlobalDaxSrc_fiveDs-12       	41063665	        28.55 ns/op	       0 B/op	       0 allocs/op
@@ -57,7 +57,7 @@ Benchmark_RunTxn_commit_fiveDs-12         	  192516	      6040 ns/op	    1056 B/
 Benchmark_RunTxn_rollback_oneDs-12        	  737906	      1584 ns/op	     464 B/op	       8 allocs/op
 Benchmark_RunTxn_rollback_fiveDs-12       	  240207	      4973 ns/op	     848 B/op	      24 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/unlock	25.188s
+ok  	github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/unlock	25.188s
 ```
 
 ## original
@@ -65,7 +65,7 @@ ok  	github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/unlock	25.188s
 ```
 goos: darwin
 goarch: amd64
-pkg: github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0
+pkg: github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
 Benchmark_AddGlobalDaxSrc_oneDs-12        	65324341	        18.39 ns/op	       0 B/op	       0 allocs/op
 Benchmark_AddGlobalDaxSrc_fiveDs-12       	12988143	        92.15 ns/op	       0 B/op	       0 allocs/op
@@ -87,5 +87,5 @@ Benchmark_RunTxn_commit_fiveDs-12         	  192198	      6100 ns/op	    1056 B/
 Benchmark_RunTxn_rollback_oneDs-12        	  725706	      1592 ns/op	     464 B/op	       8 allocs/op
 Benchmark_RunTxn_rollback_fiveDs-12       	  235545	      4986 ns/op	     848 B/op	      24 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0	24.756s
+ok  	github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0	24.756s
 ```

@@ -1,8 +1,9 @@
 package async_test
 
 import (
-	sabi "github.com/sttk-go/benchmarks_sabi/notify/async"
 	"testing"
+
+	sabi "github.com/sttk/benchmarks_sabi/notify/async"
 )
 
 func unused(v any) {}

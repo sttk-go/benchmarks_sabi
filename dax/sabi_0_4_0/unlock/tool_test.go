@@ -1,7 +1,7 @@
 package unlock_test
 
 import (
-	sabi "github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/unlock"
+	sabi "github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/unlock"
 )
 
 type FooDaxConn struct{}

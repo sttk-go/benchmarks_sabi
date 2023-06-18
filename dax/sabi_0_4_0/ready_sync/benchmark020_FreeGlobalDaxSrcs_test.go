@@ -1,8 +1,9 @@
 package ready_sync_test
 
 import (
-	sabi "github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/ready_sync"
 	"testing"
+
+	sabi "github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/ready_sync"
 )
 
 func Benchmark_FreeGlobalDaxSrcs_oneDs(b *testing.B) {

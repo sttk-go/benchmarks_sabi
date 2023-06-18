@@ -5,7 +5,7 @@
 ```
 goos: darwin
 goarch: amd64
-pkg: github.com/sttk-go/benchmarks_sabi/err/go_error
+pkg: github.com/sttk/benchmarks_sabi/err/go_error
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
 Benchmark_ok-12                         	1000000000	         0.2459 ns/op	       0 B/op	       0 allocs/op
 Benchmark_ok_isOk-12                    	1000000000	         0.2426 ns/op	       0 B/op	       0 allocs/op
@@ -27,7 +27,7 @@ Benchmark_fiveField_ErrorString-12      	10611986	       113.8 ns/op	      83 B/
 Benchmark_havingCause-12                	35803155	        32.50 ns/op	      16 B/op	       1 allocs/op
 Benchmark_havingCause_ErrorString-12    	27869539	        45.32 ns/op	      48 B/op	       1 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/err/go_error	13.781s
+ok  	github.com/sttk/benchmarks_sabi/err/go_error	13.781s
 ```
 
 ## sabi_err
@@ -35,7 +35,7 @@ ok  	github.com/sttk-go/benchmarks_sabi/err/go_error	13.781s
 ```
 goos: darwin
 goarch: amd64
-pkg: github.com/sttk-go/benchmarks_sabi/err/sabi_err
+pkg: github.com/sttk/benchmarks_sabi/err/sabi_err
 cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
 Benchmark_ok-12                         	1000000000	         0.2428 ns/op	       0 B/op	       0 allocs/op
 Benchmark_ok_isOk-12                    	1000000000	         0.2461 ns/op	       0 B/op	       0 allocs/op
@@ -57,5 +57,5 @@ Benchmark_fiveField_ErrorString-12      	  922323	      1229 ns/op	     536 B/op
 Benchmark_havingCause-12                	251967697	         6.640 ns/op	       0 B/op	       0 allocs/op
 Benchmark_havingCause_ErrorString-12    	 7394916	       163.4 ns/op	     128 B/op	       3 allocs/op
 PASS
-ok  	github.com/sttk-go/benchmarks_sabi/err/sabi_err	20.837s
+ok  	github.com/sttk/benchmarks_sabi/err/sabi_err	20.837s
 ```
