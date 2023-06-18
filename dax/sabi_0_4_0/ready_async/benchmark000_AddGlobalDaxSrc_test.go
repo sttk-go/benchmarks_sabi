@@ -1,8 +1,9 @@
 package ready_async_test
 
 import (
-	sabi "github.com/sttk-go/benchmarks_sabi/dax/sabi_0_4_0/ready_async"
 	"testing"
+
+	sabi "github.com/sttk/benchmarks_sabi/dax/sabi_0_4_0/ready_async"
 )
 
 func Benchmark_AddGlobalDaxSrc_oneDs(b *testing.B) {

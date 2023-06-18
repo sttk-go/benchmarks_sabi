@@ -1,4 +1,4 @@
-# [.benchmarks_sabi](https://github.com/sttk-go/.benchmarks_sabi)
+# [benchmarks_sabi](https://github.com/sttk/benchmarks_sabi-go)
 
 Benchmarks of Sabi modules
 

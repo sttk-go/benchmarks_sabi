@@ -1,8 +1,9 @@
 package go_error_test
 
 import (
-	"github.com/sttk-go/benchmarks_sabi/err/go_error"
 	"testing"
+
+	"github.com/sttk/benchmarks_sabi/err/go_error"
 )
 
 func unused(v any) {}

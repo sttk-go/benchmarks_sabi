@@ -1,3 +1,3 @@
-module github.com/sttk-go/benchmarks_sabi
+module github.com/sttk/benchmarks_sabi
 
 go 1.20

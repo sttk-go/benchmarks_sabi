@@ -1,8 +1,9 @@
 package sync_test
 
 import (
-	sabi "github.com/sttk-go/benchmarks_sabi/notify/sync"
 	"testing"
+
+	sabi "github.com/sttk/benchmarks_sabi/notify/sync"
 )
 
 func unused(v any) {}
