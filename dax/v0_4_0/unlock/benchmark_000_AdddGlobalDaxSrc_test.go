@@ -13,7 +13,7 @@ func Benchmark_AddGlobalDaxSrc_zeroDs(b *testing.B) {
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		sabi.FreeGlobalDaxSrcForTest("cliargs")
+		sabi.ResetGlobals()
 	}
 	b.StopTimer()
 }
@@ -26,7 +26,7 @@ func Benchmark_AddGlobalDaxSrc_oneDs(b *testing.B) {
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		sabi.AddGlobalDaxSrc("cliargs", FooDaxSrc{})
-		sabi.FreeGlobalDaxSrcForTest("cliargs")
+		sabi.ResetGlobals()
 	}
 	b.StopTimer()
 }
@@ -44,11 +44,7 @@ func Benchmark_AddGlobalDaxSrc_fiveDs(b *testing.B) {
 		sabi.AddGlobalDaxSrc("json", FooDaxSrc{})
 		sabi.AddGlobalDaxSrc("env", FooDaxSrc{})
 
-		sabi.FreeGlobalDaxSrcForTest("cliargs")
-		sabi.FreeGlobalDaxSrcForTest("database")
-		sabi.FreeGlobalDaxSrcForTest("pubsub")
-		sabi.FreeGlobalDaxSrcForTest("json")
-		sabi.FreeGlobalDaxSrcForTest("env")
+		sabi.ResetGlobals()
 	}
 	b.StopTimer()
 }
