@@ -15,7 +15,7 @@ func Benchmark_SetUpLocalDaxSrc_zeroDs(b *testing.B) {
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		sabi.FreeLocalDaxSrcForTest(base, "cliargs")
+		sabi.FreeAllLocalDaxSrcsForTest(base)
 	}
 	b.StopTimer()
 }
@@ -30,7 +30,7 @@ func Benchmark_SetUpLocalDaxSrc_oneDs(b *testing.B) {
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		base.SetUpLocalDaxSrc("cliargs", FooDaxSrc{})
-		sabi.FreeLocalDaxSrcForTest(base, "cliargs")
+		sabi.FreeAllLocalDaxSrcsForTest(base)
 	}
 	b.StopTimer()
 }
@@ -50,11 +50,7 @@ func Benchmark_SetUpLocalDaxSrc_fiveDs(b *testing.B) {
 		base.SetUpLocalDaxSrc("json", FooDaxSrc{})
 		base.SetUpLocalDaxSrc("env", FooDaxSrc{})
 
-		sabi.FreeLocalDaxSrcForTest(base, "cliargs")
-		sabi.FreeLocalDaxSrcForTest(base, "database")
-		sabi.FreeLocalDaxSrcForTest(base, "pubsub")
-		sabi.FreeLocalDaxSrcForTest(base, "json")
-		sabi.FreeLocalDaxSrcForTest(base, "env")
+		sabi.FreeAllLocalDaxSrcsForTest(base)
 	}
 	b.StopTimer()
 }

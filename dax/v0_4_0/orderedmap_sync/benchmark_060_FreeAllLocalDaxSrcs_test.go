@@ -1,12 +1,12 @@
-package v0_4_0_test
+package orderedmap_sync_test
 
 import (
 	"testing"
 
-	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0"
+	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0/orderedmap_sync"
 )
 
-func Benchmark_SetUpLocalDaxSrc_zeroDs(b *testing.B) {
+func Benchmark_FreeAllLocalDaxSrcs_zeroDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -15,12 +15,12 @@ func Benchmark_SetUpLocalDaxSrc_zeroDs(b *testing.B) {
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		sabi.FreeAllLocalDaxSrcsForTest(base)
+		base.FreeAllLocalDaxSrcs()
 	}
 	b.StopTimer()
 }
 
-func Benchmark_SetUpLocalDaxSrc_oneDs(b *testing.B) {
+func Benchmark_FreeAllLocalDaxSrcs_oneDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -30,12 +30,12 @@ func Benchmark_SetUpLocalDaxSrc_oneDs(b *testing.B) {
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
 		base.SetUpLocalDaxSrc("cliargs", FooDaxSrc{})
-		sabi.FreeAllLocalDaxSrcsForTest(base)
+		base.FreeAllLocalDaxSrcs()
 	}
 	b.StopTimer()
 }
 
-func Benchmark_SetUpLocalDaxSrc_fiveDs(b *testing.B) {
+func Benchmark_FreeAllLocalDaxSrcs_fiveDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -50,7 +50,7 @@ func Benchmark_SetUpLocalDaxSrc_fiveDs(b *testing.B) {
 		base.SetUpLocalDaxSrc("json", FooDaxSrc{})
 		base.SetUpLocalDaxSrc("env", FooDaxSrc{})
 
-		sabi.FreeAllLocalDaxSrcsForTest(base)
+		base.FreeAllLocalDaxSrcs()
 	}
 	b.StopTimer()
 }

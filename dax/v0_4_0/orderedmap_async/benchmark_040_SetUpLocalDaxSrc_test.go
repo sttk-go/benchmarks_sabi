@@ -1,9 +1,9 @@
-package v0_4_0_test
+package orderedmap_async_test
 
 import (
 	"testing"
 
-	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0"
+	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0/orderedmap_async"
 )
 
 func Benchmark_SetUpLocalDaxSrc_zeroDs(b *testing.B) {

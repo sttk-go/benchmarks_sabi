@@ -1,9 +1,9 @@
-package ready_sync_test
+package orderedmap_isasync_async_test
 
 import (
 	"testing"
 
-	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0/ready_sync"
+	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0/orderedmap_isasync_async"
 )
 
 func Benchmark_AddGlobalDaxSrc_zeroDs(b *testing.B) {
