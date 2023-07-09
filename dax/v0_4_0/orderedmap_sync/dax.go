@@ -36,7 +36,6 @@ type (
 var (
 	isGlobalDaxSrcsFixed bool                   = false
 	globalDaxSrcMap      om.Map[string, DaxSrc] = om.New[string, DaxSrc]()
-	globalErrors         map[string]Err         = make(map[string]Err)
 )
 
 type DaxConn interface {
@@ -61,10 +60,19 @@ func StartUpGlobalDaxSrcs() Err {
 	var wg sync.WaitGroup
 
 	for ent := globalDaxSrcMap.Front(); ent != nil; ent = ent.Next() {
-		ds := ent.Value()
-		err := ds.SetUp(&wg)
+		err := ent.Value().SetUp(&wg)
 		if err.IsNotOk() {
-			globalErrors[ent.Key()] = err
+			wg.Wait()
+			ShutdownGlobalDaxSrcs()
+			errs := make(map[string]Err)
+			errs[ent.Key()] = err
+			for ent := ent.Prev(); ent != nil; ent = ent.Prev() {
+				err = ent.Value().Ready()
+				if err.IsNotOk() {
+					errs[ent.Key()] = err
+				}
+			}
+			return NewErr(FailToStartUpGlobalDaxSrcs{Errors: errs})
 		}
 	}
 
@@ -73,13 +81,17 @@ func StartUpGlobalDaxSrcs() Err {
 	for ent := globalDaxSrcMap.Front(); ent != nil; ent = ent.Next() {
 		err := ent.Value().Ready()
 		if err.IsNotOk() {
-			globalErrors[ent.Key()] = err
+			ShutdownGlobalDaxSrcs()
+			errs := make(map[string]Err)
+			errs[ent.Key()] = err
+			for ent := ent.Next(); ent != nil; ent = ent.Next() {
+				err = ent.Value().Ready()
+				if err.IsNotOk() {
+					errs[ent.Key()] = err
+				}
+			}
+			return NewErr(FailToStartUpGlobalDaxSrcs{Errors: errs})
 		}
-	}
-
-	if len(globalErrors) > 0 {
-		ShutdownGlobalDaxSrcs()
-		return NewErr(FailToStartUpGlobalDaxSrcs{Errors: globalErrors})
 	}
 
 	return Ok()
@@ -167,15 +179,22 @@ func (base *daxBaseImpl) begin() {
 }
 
 func (base *daxBaseImpl) commit() Err {
-	errs := make(map[string]Err)
-
 	var wg sync.WaitGroup
 
 	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
 		conn := ent.Value()
 		err := conn.Commit(&wg)
 		if err.IsNotOk() {
+			wg.Wait()
+			errs := make(map[string]Err)
 			errs[ent.Key()] = err
+			for ent := ent.Prev(); ent != nil; ent = ent.Prev() {
+				err := ent.Value().Committed()
+				if err.IsNotOk() {
+					errs[ent.Key()] = err
+				}
+			}
+			return NewErr(FailToCommitDaxConn{Errors: errs})
 		}
 	}
 
@@ -184,12 +203,16 @@ func (base *daxBaseImpl) commit() Err {
 	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
 		err := ent.Value().Committed()
 		if err.IsNotOk() {
+			errs := make(map[string]Err)
 			errs[ent.Key()] = err
+			for ent := ent.Next(); ent != nil; ent = ent.Next() {
+				err := ent.Value().Committed()
+				if err.IsNotOk() {
+					errs[ent.Key()] = err
+				}
+			}
+			return NewErr(FailToCommitDaxConn{Errors: errs})
 		}
-	}
-
-	if len(errs) > 0 {
-		return NewErr(FailToCommitDaxConn{Errors: errs})
 	}
 
 	return Ok()
@@ -199,8 +222,7 @@ func (base *daxBaseImpl) rollback() {
 	var wg sync.WaitGroup
 
 	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
-		conn := ent.Value()
-		conn.Rollback(&wg)
+		ent.Value().Rollback(&wg)
 	}
 
 	wg.Wait()

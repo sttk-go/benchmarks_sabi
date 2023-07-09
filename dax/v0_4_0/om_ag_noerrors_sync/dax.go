@@ -99,7 +99,7 @@ type daxBaseImpl struct {
 	localDaxSrcMap      om.Map[string, DaxSrc]
 	daxConnMap          om.Map[string, DaxConn]
 	daxConnMutex        sync.Mutex
-  ag asyncGroupSync
+	ag                  asyncGroupSync
 }
 
 func NewDaxBase() DaxBase {

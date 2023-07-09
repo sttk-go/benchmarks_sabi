@@ -1,5 +1,43 @@
 # Benchmark of Dax in sabi v0.4.0
 
+## orderedmap_sync (modified error collecting in StartUpGobalDaxSrcs and commit)
+
+```
+goos: darwin
+goarch: amd64
+pkg: github.com/sttk/benchmarks_sabi/dax/v0_4_0/orderedmap_sync
+cpu: Intel(R) Core(TM) i7-9750H CPU @ 2.60GHz
+Benchmark_AddGlobalDaxSrc_zeroDs-12          	31749408	        35.66 ns/op	      48 B/op	       1 allocs/op
+Benchmark_AddGlobalDaxSrc_oneDs-12           	 8166901	       142.7 ns/op	     320 B/op	       3 allocs/op
+Benchmark_AddGlobalDaxSrc_fiveDs-12          	 3073396	       391.2 ns/op	     576 B/op	       7 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_zeroDs-12     	1000000000	         0.2688 ns/op	       0 B/op	       0 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_oneDs-12      	41561572	        26.13 ns/op	      16 B/op	       1 allocs/op
+Benchmark_StartUpGlobalDaxSrcs_fiveDs-12     	28885701	        40.63 ns/op	      16 B/op	       1 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_zeroDs-12    	1000000000	         0.2556 ns/op	       0 B/op	       0 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_oneDs-12     	391076662	         3.115 ns/op	       0 B/op	       0 allocs/op
+Benchmark_ShutdownGlobalDaxSrcs_freeDs-12    	100000000	        10.00 ns/op	       0 B/op	       0 allocs/op
+Benchmark_NewDaxBase-12                      	136736706	         8.596 ns/op	       0 B/op	       0 allocs/op
+Benchmark_SetUpLocalDaxSrc_zeroDs-12         	35477198	        33.66 ns/op	      48 B/op	       1 allocs/op
+Benchmark_SetUpLocalDaxSrc_oneDs-12          	 8186217	       148.2 ns/op	     320 B/op	       3 allocs/op
+Benchmark_SetUpLocalDaxSrc_fiveDs-12         	 2895316	       416.8 ns/op	     576 B/op	       7 allocs/op
+Benchmark_FreeLocalDaxSrc_zeroDs-12          	33724852	        36.07 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeLocalDaxSrc_oneDs-12           	21649903	        55.35 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeLocalDaxSrc_fiveDs-12          	 7420558	       157.5 ns/op	       0 B/op	       0 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_zeroDs-12      	33447525	        36.04 ns/op	      48 B/op	       1 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_oneDs-12       	 7500762	       156.1 ns/op	     320 B/op	       3 allocs/op
+Benchmark_FreeAllLocalDaxSrcs_fiveDs-12      	 2761676	       432.1 ns/op	     576 B/op	       7 allocs/op
+Benchmark_GetDaxConn_global_oneDs-12         	92662339	        12.99 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_global_fiveDs-12        	16650568	        74.17 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_oneDs-12          	91464606	        14.65 ns/op	       0 B/op	       0 allocs/op
+Benchmark_GetDaxConn_local_fiveDs-12         	14692476	        83.56 ns/op	       0 B/op	       0 allocs/op
+Benchmark_RunTxn_commit_oneDs-12             	 4742356	       252.1 ns/op	     336 B/op	       4 allocs/op
+Benchmark_RunTxn_commit_fiveDs-12            	 1680709	       673.2 ns/op	     592 B/op	       8 allocs/op
+Benchmark_RunTxn_rollback_oneDs-12           	 5152184	       236.9 ns/op	     336 B/op	       4 allocs/op
+Benchmark_RunTxn_rollback_fiveDs-12          	 1820637	       678.7 ns/op	     592 B/op	       8 allocs/op
+PASS
+ok  	github.com/sttk/benchmarks_sabi/dax/v0_4_0/orderedmap_sync	35.862s
+```
+
 ## orderedmap_sync
 
 ```
