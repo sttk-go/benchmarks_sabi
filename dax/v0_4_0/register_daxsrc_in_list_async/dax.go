@@ -3,8 +3,7 @@ package register_daxsrc_in_list_async
 import (
 	"reflect"
 	"sync"
-
-	om "github.com/sttk/orderedmap"
+	// om "github.com/sttk/orderedmap"
 )
 
 type (
@@ -44,6 +43,18 @@ type daxSrcEntry struct {
 type daxSrcList struct {
 	head *daxSrcEntry
 	last *daxSrcEntry
+}
+
+type daxConnEntry struct {
+	name string
+	conn DaxConn
+	prev *daxConnEntry
+	next *daxConnEntry
+}
+
+type daxConnList struct {
+	head *daxConnEntry
+	last *daxConnEntry
 }
 
 var (
@@ -143,17 +154,25 @@ type daxBaseImpl struct {
 	isLocalDaxSrcsFixed bool
 	localDaxSrcList     daxSrcList
 	daxSrcEntryMap      map[string](*daxSrcEntry)
-	daxConnMap          om.Map[string, DaxConn]
-	daxConnMutex        sync.Mutex
+	daxConnList         daxConnList
+	daxConnMap          map[string](*daxConnEntry)
+	//daxConnMap          om.Map[string, DaxConn]
+	daxConnMutex sync.Mutex
 }
 
 func NewDaxBase() DaxBase {
-	return &daxBaseImpl{
+	base := daxBaseImpl{
 		isLocalDaxSrcsFixed: false,
 		localDaxSrcList:     daxSrcList{},
 		daxSrcEntryMap:      make(map[string]*daxSrcEntry),
-		daxConnMap:          om.New[string, DaxConn](),
+		daxConnList:         daxConnList{},
+		daxConnMap:          make(map[string]*daxConnEntry),
+		//daxConnMap:          om.New[string, DaxConn](),
 	}
+	for ent := globalDaxSrcList.head; ent != nil; ent = ent.next {
+		base.daxSrcEntryMap[ent.name] = ent
+	}
+	return &base
 }
 
 func (base *daxBaseImpl) SetUpLocalDaxSrc(name string, ds DaxSrc) Err {
@@ -180,6 +199,8 @@ func (base *daxBaseImpl) SetUpLocalDaxSrc(name string, ds DaxSrc) Err {
 		base.localDaxSrcList.last.next = ent
 		base.localDaxSrcList.last = ent
 	}
+
+	base.daxSrcEntryMap[ent.name] = ent
 
 	return Ok()
 }
@@ -217,21 +238,13 @@ func (base *daxBaseImpl) FreeAllLocalDaxSrcs() {
 func (base *daxBaseImpl) begin() {
 	base.isLocalDaxSrcsFixed = true
 	isGlobalDaxSrcsFixed = true
-
-	for ent := globalDaxSrcList.head; ent != nil; ent = ent.next {
-		base.daxSrcEntryMap[ent.name] = ent
-	}
-	for ent := base.localDaxSrcList.head; ent != nil; ent = ent.next {
-		base.daxSrcEntryMap[ent.name] = ent
-	}
 }
 
 func (base *daxBaseImpl) commit() Err {
 	var wg sync.WaitGroup
 
-	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
-		conn := ent.Value()
-		err := conn.Commit(&wg)
+	for ent := base.daxConnList.head; ent != nil; ent = ent.next {
+		err := ent.conn.Commit(&wg)
 		if err.IsNotOk() {
 			wg.Wait()
 			return NewErr(FailToCommitDaxConn{})
@@ -240,8 +253,8 @@ func (base *daxBaseImpl) commit() Err {
 
 	wg.Wait()
 
-	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
-		err := ent.Value().Committed()
+	for ent := base.daxConnList.head; ent != nil; ent = ent.next {
+		err := ent.conn.Committed()
 		if err.IsNotOk() {
 			return NewErr(FailToCommitDaxConn{})
 		}
@@ -253,49 +266,58 @@ func (base *daxBaseImpl) commit() Err {
 func (base *daxBaseImpl) rollback() {
 	var wg sync.WaitGroup
 
-	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
-		ent.Value().Rollback(&wg)
+	for ent := base.daxConnList.head; ent != nil; ent = ent.next {
+		ent.conn.Rollback(&wg)
 	}
 
 	wg.Wait()
 }
 
 func (base *daxBaseImpl) end() {
-	for ent := base.daxConnMap.Front(); ent != nil; ent = ent.Next() {
+	for ent := base.daxConnList.head; ent != nil; ent = ent.next {
+		ent.conn.Close()
 	}
 
-	base.daxConnMap = om.New[string, DaxConn]()
+	base.daxConnList.head = nil
+	base.daxConnList.last = nil
+	base.daxConnMap = make(map[string](*daxConnEntry))
+
 	base.isLocalDaxSrcsFixed = false
 }
 
 func (base *daxBaseImpl) getDaxConn(name string) (DaxConn, Err) {
-	conn, loaded := base.daxConnMap.Load(name)
+	ent, loaded := base.daxConnMap[name]
 	if loaded {
-		return conn, Ok()
+		return ent.conn, Ok()
 	}
 
 	base.daxConnMutex.Lock()
 	defer base.daxConnMutex.Unlock()
 
-	fn := func() (DaxConn, error) {
-		dsEnt, exists := base.daxSrcEntryMap[name]
-		if !exists {
-			return nil, NewErr(DaxSrcIsNotFound{Name: name})
-		}
-		conn, err := dsEnt.ds.CreateDaxConn()
-		if err.IsNotOk() {
-			return nil, NewErr(FailToCreateDaxConn{Name: name}, err)
-		}
-		if conn == nil {
-			return nil, NewErr(CreatedDaxConnIsNil{Name: name})
-		}
-		return conn, nil
+	dsEnt, exists := base.daxSrcEntryMap[name]
+	if !exists {
+		return nil, NewErr(DaxSrcIsNotFound{Name: name})
+	}
+	conn, err := dsEnt.ds.CreateDaxConn()
+	if err.IsNotOk() {
+		return nil, NewErr(FailToCreateDaxConn{Name: name}, err)
+	}
+	if conn == nil {
+		return nil, NewErr(CreatedDaxConnIsNil{Name: name})
 	}
 
-	conn, _, e := base.daxConnMap.LoadOrStoreFunc(name, fn)
-	if e != nil {
-		return nil, e.(Err)
+	ent = &daxConnEntry{name: name, conn: conn}
+	if base.daxConnList.head == nil {
+		base.daxConnList.head = ent
+		base.daxConnList.last = ent
+	} else {
+		ent.prev = base.daxConnList.last
+		base.daxConnList.last.next = ent
+		base.daxConnList.last = ent
 	}
+
+	base.daxConnMap[ent.name] = ent
+
 	return conn, Ok()
 }
 
