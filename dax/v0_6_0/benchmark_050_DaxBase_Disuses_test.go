@@ -1,16 +1,16 @@
-package v0_5_0_test
+package v0_6_0_test
 
 import (
 	"testing"
 
-	prev "github.com/sttk/benchmarks_sabi/dax/v0_4_0"
-	sabi "github.com/sttk/benchmarks_sabi/dax/v0_5_0"
+	prev "github.com/sttk/benchmarks_sabi/dax/v0_5_0"
+	sabi "github.com/sttk/benchmarks_sabi/dax/v0_6_0"
 
-	prev_supp "github.com/sttk/benchmarks_sabi/dax/v0_4_0/supp"
-	supp "github.com/sttk/benchmarks_sabi/dax/v0_5_0/supp"
+	prev_supp "github.com/sttk/benchmarks_sabi/dax/v0_5_0/supp"
+	supp "github.com/sttk/benchmarks_sabi/dax/v0_6_0/supp"
 )
 
-func BenchmarkDax_____FreeLocalDaxSrc_zeroDs(b *testing.B) {
+func BenchmarkDax_____DaxBase_Disuses_zeroDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -28,7 +28,7 @@ func BenchmarkDax_____FreeLocalDaxSrc_zeroDs(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkDaxPrev_FreeLocalDaxSrc_zeroDs(b *testing.B) {
+func BenchmarkDaxPrev_DaxBase_Disuses_zeroDs(b *testing.B) {
 	b.StopTimer()
 	prev.ResetGlobals()
 	defer prev.ResetGlobals()
@@ -46,7 +46,7 @@ func BenchmarkDaxPrev_FreeLocalDaxSrc_zeroDs(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkDax_____FreeLocalDaxSrc_oneDs(b *testing.B) {
+func BenchmarkDax_____DaxBase_Disuses_oneDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -61,12 +61,12 @@ func BenchmarkDax_____FreeLocalDaxSrc_oneDs(b *testing.B) {
 		sabi.AddLocalDaxSrcForTest(base, "json", supp.FooDaxSrc{})
 		sabi.AddLocalDaxSrcForTest(base, "env", supp.FooDaxSrc{})
 
-		base.FreeLocalDaxSrc("cliargs")
+		base.Disuses("cliargs")
 	}
 	b.StopTimer()
 }
 
-func BenchmarkDaxPrev_FreeLocalDaxSrc_oneDs(b *testing.B) {
+func BenchmarkDaxPrev_DaxBase_Disuses_oneDs(b *testing.B) {
 	b.StopTimer()
 	prev.ResetGlobals()
 	defer prev.ResetGlobals()
@@ -86,7 +86,7 @@ func BenchmarkDaxPrev_FreeLocalDaxSrc_oneDs(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkDax_____FreeLocalDaxSrc_fiveDs(b *testing.B) {
+func BenchmarkDax_____DaxBase_Disuses_fiveDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -101,16 +101,16 @@ func BenchmarkDax_____FreeLocalDaxSrc_fiveDs(b *testing.B) {
 		sabi.AddLocalDaxSrcForTest(base, "json", supp.FooDaxSrc{})
 		sabi.AddLocalDaxSrcForTest(base, "env", supp.FooDaxSrc{})
 
-		base.FreeLocalDaxSrc("cliargs")
-		base.FreeLocalDaxSrc("database")
-		base.FreeLocalDaxSrc("pubsub")
-		base.FreeLocalDaxSrc("json")
-		base.FreeLocalDaxSrc("env")
+		base.Disuses("cliargs")
+		base.Disuses("database")
+		base.Disuses("pubsub")
+		base.Disuses("json")
+		base.Disuses("env")
 	}
 	b.StopTimer()
 }
 
-func BenchmarkDaxPrev_FreeLocalDaxSrc_fiveDs(b *testing.B) {
+func BenchmarkDaxPrev_DaxBase_Disuses_fiveDs(b *testing.B) {
 	b.StopTimer()
 	prev.ResetGlobals()
 	defer prev.ResetGlobals()

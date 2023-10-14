@@ -1,16 +1,15 @@
-package v0_5_0_test
+package v0_6_0_test
 
 import (
 	"testing"
 
-	prev "github.com/sttk/benchmarks_sabi/dax/v0_4_0"
-	sabi "github.com/sttk/benchmarks_sabi/dax/v0_5_0"
-
-	prev_supp "github.com/sttk/benchmarks_sabi/dax/v0_4_0/supp"
-	supp "github.com/sttk/benchmarks_sabi/dax/v0_5_0/supp"
+	prev "github.com/sttk/benchmarks_sabi/dax/v0_5_0"
+	prev_supp "github.com/sttk/benchmarks_sabi/dax/v0_5_0/supp"
+	sabi "github.com/sttk/benchmarks_sabi/dax/v0_6_0"
+	supp "github.com/sttk/benchmarks_sabi/dax/v0_6_0/supp"
 )
 
-func BenchmarkDax_____AddGlobalDaxSrc_zeroDs(b *testing.B) {
+func BenchmarkDax_____Sabi_Uses_zeroDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
@@ -22,7 +21,7 @@ func BenchmarkDax_____AddGlobalDaxSrc_zeroDs(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkDaxPrev_AddGlobalDaxSrc_zeroDs(b *testing.B) {
+func BenchmarkDaxPrev_Sabi_Uses_zeroDs(b *testing.B) {
 	b.StopTimer()
 	prev.ResetGlobals()
 	defer prev.ResetGlobals()
@@ -34,23 +33,23 @@ func BenchmarkDaxPrev_AddGlobalDaxSrc_zeroDs(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkDax_____AddGlobalDaxSrc_oneDs(b *testing.B) {
+func BenchmarkDax_____Sabi_Uses_oneDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		sabi.AddGlobalDaxSrc("cliargs", supp.FooDaxSrc{})
+		sabi.Uses("cliargs", supp.FooDaxSrc{})
 		sabi.ResetGlobals()
 	}
 	b.StopTimer()
 }
 
-func BenchmarkDaxPrev_AddGlobalDaxSrc_oneDs(b *testing.B) {
+func BenchmarkDaxPrev_Sabi_Uses_oneDs(b *testing.B) {
 	b.StopTimer()
 	prev.ResetGlobals()
-	defer prev.ResetGlobals()
+	defer sabi.ResetGlobals()
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
@@ -60,25 +59,25 @@ func BenchmarkDaxPrev_AddGlobalDaxSrc_oneDs(b *testing.B) {
 	b.StopTimer()
 }
 
-func BenchmarkDax_____AddGlobalDaxSrc_fiveDs(b *testing.B) {
+func BenchmarkDax_____Sabi_Uses_fiveDs(b *testing.B) {
 	b.StopTimer()
 	sabi.ResetGlobals()
 	defer sabi.ResetGlobals()
 
 	b.StartTimer()
 	for i := 0; i < b.N; i++ {
-		sabi.AddGlobalDaxSrc("cliargs", supp.FooDaxSrc{})
-		sabi.AddGlobalDaxSrc("database", supp.FooDaxSrc{})
-		sabi.AddGlobalDaxSrc("pubsub", supp.FooDaxSrc{})
-		sabi.AddGlobalDaxSrc("json", supp.FooDaxSrc{})
-		sabi.AddGlobalDaxSrc("env", supp.FooDaxSrc{})
+		sabi.Uses("cliargs", supp.FooDaxSrc{})
+		sabi.Uses("database", supp.FooDaxSrc{})
+		sabi.Uses("pubsub", supp.FooDaxSrc{})
+		sabi.Uses("json", supp.FooDaxSrc{})
+		sabi.Uses("env", supp.FooDaxSrc{})
 
 		sabi.ResetGlobals()
 	}
 	b.StopTimer()
 }
 
-func BenchmarkDaxPrev_AddGlobalDaxSrc_fiveDs(b *testing.B) {
+func BenchmarkDaxPrev_Sabi_Uses_fiveDs(b *testing.B) {
 	b.StopTimer()
 	prev.ResetGlobals()
 	defer prev.ResetGlobals()
