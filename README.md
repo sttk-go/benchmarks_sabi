@@ -2,9 +2,13 @@
 
 Benchmarks of Sabi modules
 
-- [`error` and `sabi.Err`](./err/benchmark.md)
-- [`sabi.Err`'s notification](./notify/benchmark.md)
-- [`sabi.DaxBase`](./dax/sabi_0_4_0/benchmark.md)
-    - [`unlock`](./dax/sabi_0_4_0/unlock/benchmark.md)
-    - [`ready_sync`](./dax/sabi_0_4_0/ready_sync/benchmark.md)
-    - [`ready_async`](./dax/sabi_0_4_0/ready_async/benchmark.md)
+## Dax
+
+- [v0.6.0](https://github.com/sttk/benchmarks_sabi/blob/main/dax/v0_6_0/benchmark.md)
+- [v0.5.0](https://github.com/sttk/benchmarks_sabi/blob/main/dax/v0_5_0/benchmark.md)
+- [v0.4.0](https://github.com/sttk/benchmarks_sabi/blob/main/dax/v0_4_0/benchmark.md)
+
+## Err
+
+- [v0.6.0](https://github.com/sttk/benchmarks_sabi/blob/main/err/v0_6_0/benchmark.md)
+- [v0.4.0](https://github.com/sttk/benchmarks_sabi/blob/main/err/v0_4_0/benchmark.md)
