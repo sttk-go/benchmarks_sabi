@@ -24,3 +24,7 @@ func FreeLocalDaxSrcForTest(base DaxBase, name string) {
 func FreeAllLocalDaxSrcsForTest(base DaxBase) {
 	base.(*daxBaseImpl).localDaxSrcMap = make(map[string]DaxSrc)
 }
+
+func Begin(base DaxBase) {
+	base.begin()
+}

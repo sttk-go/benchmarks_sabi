@@ -1,4 +1,4 @@
-package v0_4_0_test
+package supp_test
 
 import (
 	sabi "github.com/sttk/benchmarks_sabi/dax/v0_4_0"
